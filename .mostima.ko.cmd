@@ -1,1 +1,0 @@
-savedcmd_mostima.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T /usr/lib/modules/7.1.6-arch1-1/build/scripts/module.lds -o mostima.ko mostima.o mostima.mod.o .module-common.o

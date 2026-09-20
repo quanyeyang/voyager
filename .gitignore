@@ -1,21 +1,32 @@
-# kbuild out-of-tree module
+# kbuild out-of-tree module artifacts
 *.o
 *.o.d
+*.a
 *.ko
 *.ko.unsigned
 *.mod
 *.mod.c
 *.mod.o
 *.nsdeps
+*.symversions
 .*.cmd
+.*.d
 .module-common.o
 Module.symvers
 modules.order
 .tmp_versions/
+.tmp_*/
 
 # machine-local compile DB (/lib/modules/$(uname -r)/build)
 compile_commands.json
 .cache/
+
+# editor / IDE
+.vscode/
+.idea/
+*.swp
+*~
+*.orig
 
 # ctags / cscope
 tags
@@ -26,8 +37,3 @@ GPATH
 GRTAGS
 GSYMS
 GTAGS
-
-# editor junk
-*.swp
-*~
-*.orig

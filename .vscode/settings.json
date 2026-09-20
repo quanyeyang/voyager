@@ -1,4 +1,0 @@
-{
-    "clangd.enable": true,
-    "C_Cpp.intelliSenseEngine": "disabled"
-}
