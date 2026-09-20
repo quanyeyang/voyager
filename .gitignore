@@ -27,6 +27,7 @@ compile_commands.json
 *.swp
 *~
 *.orig
+.clangd
 
 # ctags / cscope
 tags

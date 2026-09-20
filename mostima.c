@@ -10,6 +10,7 @@
 
 #include <linux/if_ether.h> // Ethernet layer
 #include <linux/ip.h> // IP layer
+#include <linux/ipv6.h>
 
 static struct net_device *mostima_dev; // a struct pointer points to our device.
 
@@ -55,6 +56,42 @@ static int mostima_stop(struct net_device *dev)
     return 0;
 }
 
+// parse IP protocol packets
+static void mostima_dump_ipv4(struct sk_buff *skb)
+{
+	struct iphdr *iph;
+
+	if (!pskb_may_pull(skb, ETH_HLEN + sizeof(struct iphdr)))
+		return;
+
+	iph = ip_hdr(skb);
+
+	pr_info_ratelimited(
+		"toyeth: IPv4 src=%pI4 dst=%pI4 protocol=%u\n",
+		&iph->saddr,
+		&iph->daddr,
+		iph->protocol
+	);
+}
+
+static void mostima_dump_ipv6(struct sk_buff *skb)
+{
+    struct ipv6hdr *ipv6h;
+
+    if (!pskb_may_pull(skb, ETH_HLEN + sizeof(struct ipv6hdr)))
+        return;
+
+    ipv6h = ipv6_hdr(skb);
+
+	pr_info_ratelimited(
+		"toyeth: IPv6 src=%pI6 dst=%pI6 protocol=%u\n",
+		&ipv6h->saddr,
+		&ipv6h->daddr,
+		ipv6h->nexthdr
+	);
+}
+
+
 // when linux wants the device to transmit pkt
 static netdev_tx_t mostima_start_xmit(struct sk_buff *skb,
                                 struct net_device *dev)
@@ -62,14 +99,14 @@ static netdev_tx_t mostima_start_xmit(struct sk_buff *skb,
     struct ethhdr *ethernet_header;
     u16 protocol;
 
+
     pr_info_ratelimited(
         "mostima: %s TX packet: %u bytes\n",
         dev->name,
         skb->len
     );
 
-
-    // 1.check what the ethernet header would be like.
+    // check what the ethernet header would be like.
     ethernet_header = eth_hdr(skb);
     protocol = ntohs(ethernet_header->h_proto);
 
@@ -81,11 +118,31 @@ static netdev_tx_t mostima_start_xmit(struct sk_buff *skb,
         protocol
     );
 
+    // also we can check the protocol of the frame
+    switch (protocol) {
+        case ETH_P_ARP:
+            pr_cont("protocol=ARP\n");
+            break;
+        case ETH_P_IP:
+            mostima_dump_ipv4(skb);
+            pr_cont("protocol=IPv4\n");
+            break;
+        case ETH_P_IPV6:
+            mostima_dump_ipv6(skb);
+            pr_cont("protocol=IPv6\n");
+            break;
 
-    // LWN: if you return TX_OK, you must free skb in this function
-    // this means driver receive the packet successfully
-    dev_kfree_skb(skb);
-    return NETDEV_TX_OK;
+        default:
+            pr_cont("protocol=0x%04x\n", protocol);
+            break;
+    }
+
+
+// LWN: if you return TX_OK, you must free skb in this function
+// this means driver receive the packet successfully
+RECEIVED_PACKET:
+        dev_kfree_skb(skb);
+        return NETDEV_TX_OK;
 }
 
 // operations defined here (function pointers)
