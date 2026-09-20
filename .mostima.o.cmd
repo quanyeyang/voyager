@@ -37,23 +37,21 @@ deps_mostima.o := \
     $(wildcard include/config/SHADOW_CALL_STACK) \
     $(wildcard include/config/KCOV) \
     $(wildcard include/config/CC_HAS_TYPEOF_UNQUAL) \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/kernel.h \
-    $(wildcard include/config/PREEMPT_VOLUNTARY_BUILD) \
-    $(wildcard include/config/PREEMPT_DYNAMIC) \
-    $(wildcard include/config/HAVE_PREEMPT_DYNAMIC_CALL) \
-    $(wildcard include/config/HAVE_PREEMPT_DYNAMIC_KEY) \
-    $(wildcard include/config/PREEMPT_) \
-    $(wildcard include/config/DEBUG_ATOMIC_SLEEP) \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/printk.h \
+    $(wildcard include/config/MESSAGE_LOGLEVEL_DEFAULT) \
+    $(wildcard include/config/CONSOLE_LOGLEVEL_DEFAULT) \
+    $(wildcard include/config/CONSOLE_LOGLEVEL_QUIET) \
+    $(wildcard include/config/EARLY_PRINTK) \
+    $(wildcard include/config/PRINTK) \
     $(wildcard include/config/SMP) \
-    $(wildcard include/config/MMU) \
-    $(wildcard include/config/PROVE_LOCKING) \
-    $(wildcard include/config/DYNAMIC_FTRACE) \
+    $(wildcard include/config/PRINTK_INDEX) \
+    $(wildcard include/config/DYNAMIC_DEBUG) \
+    $(wildcard include/config/DYNAMIC_DEBUG_CORE) \
   /usr/lib/modules/7.1.6-arch1-1/build/include/linux/stdarg.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/align.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/vdso/align.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/vdso/const.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/uapi/linux/const.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/array_size.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/init.h \
+    $(wildcard include/config/MEMORY_HOTPLUG) \
+    $(wildcard include/config/HAVE_ARCH_PREL32_RELOCATIONS) \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/build_bug.h \
   /usr/lib/modules/7.1.6-arch1-1/build/include/linux/compiler.h \
     $(wildcard include/config/TRACE_BRANCH_PROFILING) \
     $(wildcard include/config/PROFILE_ALL_BRANCHES) \
@@ -88,12 +86,10 @@ deps_mostima.o := \
   /usr/lib/modules/7.1.6-arch1-1/build/include/linux/kcsan-checks.h \
     $(wildcard include/config/KCSAN_WEAK_MEMORY) \
     $(wildcard include/config/KCSAN_IGNORE_ATOMICS) \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/limits.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/uapi/linux/limits.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/vdso/limits.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/stringify.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/kern_levels.h \
   /usr/lib/modules/7.1.6-arch1-1/build/include/linux/linkage.h \
     $(wildcard include/config/ARCH_USE_SYM_ANNOTATIONS) \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/stringify.h \
   /usr/lib/modules/7.1.6-arch1-1/build/include/linux/export.h \
     $(wildcard include/config/MODVERSIONS) \
     $(wildcard include/config/GENDWARFKSYMS) \
@@ -106,62 +102,17 @@ deps_mostima.o := \
     $(wildcard include/config/UML) \
   /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/ibt.h \
     $(wildcard include/config/X86_KERNEL_IBT) \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/container_of.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/build_bug.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/bitops.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/ratelimit_types.h \
   /usr/lib/modules/7.1.6-arch1-1/build/include/linux/bits.h \
   /usr/lib/modules/7.1.6-arch1-1/build/include/vdso/bits.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/vdso/const.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/uapi/linux/const.h \
   /usr/lib/modules/7.1.6-arch1-1/build/include/uapi/linux/bits.h \
   /usr/lib/modules/7.1.6-arch1-1/build/include/linux/overflow.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/limits.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/uapi/linux/limits.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/vdso/limits.h \
   /usr/lib/modules/7.1.6-arch1-1/build/include/linux/const.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/typecheck.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/uapi/linux/kernel.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/uapi/linux/sysinfo.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/asm-generic/bitops/generic-non-atomic.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/barrier.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/alternative.h \
-    $(wildcard include/config/CALL_THUNKS) \
-    $(wildcard include/config/MITIGATION_ITS) \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/objtool.h \
-    $(wildcard include/config/FRAME_POINTER) \
-    $(wildcard include/config/NOINSTR_VALIDATION) \
-    $(wildcard include/config/MITIGATION_UNRET_ENTRY) \
-    $(wildcard include/config/MITIGATION_SRSO) \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/objtool_types.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/annotate.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/asm.h \
-    $(wildcard include/config/KPROBES) \
-  /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/asm-offsets.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/generated/asm-offsets.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/extable_fixup_types.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/bug.h \
-    $(wildcard include/config/GENERIC_BUG) \
-    $(wildcard include/config/DEBUG_BUGVERBOSE) \
-    $(wildcard include/config/DEBUG_BUGVERBOSE_DETAILED) \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/instrumentation.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/static_call_types.h \
-    $(wildcard include/config/HAVE_STATIC_CALL) \
-    $(wildcard include/config/HAVE_STATIC_CALL_INLINE) \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/asm-generic/bug.h \
-    $(wildcard include/config/BUG) \
-    $(wildcard include/config/GENERIC_BUG_RELATIVE_POINTERS) \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/once_lite.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/panic.h \
-    $(wildcard include/config/PANIC_TIMEOUT) \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/printk.h \
-    $(wildcard include/config/MESSAGE_LOGLEVEL_DEFAULT) \
-    $(wildcard include/config/CONSOLE_LOGLEVEL_DEFAULT) \
-    $(wildcard include/config/CONSOLE_LOGLEVEL_QUIET) \
-    $(wildcard include/config/EARLY_PRINTK) \
-    $(wildcard include/config/PRINTK) \
-    $(wildcard include/config/PRINTK_INDEX) \
-    $(wildcard include/config/DYNAMIC_DEBUG) \
-    $(wildcard include/config/DYNAMIC_DEBUG_CORE) \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/init.h \
-    $(wildcard include/config/MEMORY_HOTPLUG) \
-    $(wildcard include/config/HAVE_ARCH_PREL32_RELOCATIONS) \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/kern_levels.h \
-  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/ratelimit_types.h \
   /usr/lib/modules/7.1.6-arch1-1/build/include/uapi/linux/param.h \
   /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/generated/uapi/asm/param.h \
   /usr/lib/modules/7.1.6-arch1-1/build/include/asm-generic/param.h \
@@ -185,6 +136,7 @@ deps_mostima.o := \
     $(wildcard include/config/PROVE_RAW_LOCK_NESTING) \
     $(wildcard include/config/LOCKDEP) \
     $(wildcard include/config/LOCK_STAT) \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/once_lite.h \
   /usr/lib/modules/7.1.6-arch1-1/build/include/linux/dynamic_debug.h \
     $(wildcard include/config/JUMP_LABEL) \
   /usr/lib/modules/7.1.6-arch1-1/build/include/linux/jump_label.h \
@@ -197,7 +149,55 @@ deps_mostima.o := \
   /usr/lib/modules/7.1.6-arch1-1/build/include/linux/args.h \
   /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/jump_label.h \
     $(wildcard include/config/HAVE_JUMP_LABEL_HACK) \
+  /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/asm.h \
+    $(wildcard include/config/KPROBES) \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/annotate.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/objtool_types.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/asm-offsets.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/generated/asm-offsets.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/extable_fixup_types.h \
   /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/nops.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/kernel.h \
+    $(wildcard include/config/PREEMPT_VOLUNTARY_BUILD) \
+    $(wildcard include/config/PREEMPT_DYNAMIC) \
+    $(wildcard include/config/HAVE_PREEMPT_DYNAMIC_CALL) \
+    $(wildcard include/config/HAVE_PREEMPT_DYNAMIC_KEY) \
+    $(wildcard include/config/PREEMPT_) \
+    $(wildcard include/config/DEBUG_ATOMIC_SLEEP) \
+    $(wildcard include/config/MMU) \
+    $(wildcard include/config/PROVE_LOCKING) \
+    $(wildcard include/config/DYNAMIC_FTRACE) \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/align.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/vdso/align.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/array_size.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/container_of.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/bitops.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/typecheck.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/uapi/linux/kernel.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/uapi/linux/sysinfo.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/asm-generic/bitops/generic-non-atomic.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/barrier.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/alternative.h \
+    $(wildcard include/config/CALL_THUNKS) \
+    $(wildcard include/config/MITIGATION_ITS) \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/objtool.h \
+    $(wildcard include/config/FRAME_POINTER) \
+    $(wildcard include/config/NOINSTR_VALIDATION) \
+    $(wildcard include/config/MITIGATION_UNRET_ENTRY) \
+    $(wildcard include/config/MITIGATION_SRSO) \
+  /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/bug.h \
+    $(wildcard include/config/GENERIC_BUG) \
+    $(wildcard include/config/DEBUG_BUGVERBOSE) \
+    $(wildcard include/config/DEBUG_BUGVERBOSE_DETAILED) \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/instrumentation.h \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/static_call_types.h \
+    $(wildcard include/config/HAVE_STATIC_CALL) \
+    $(wildcard include/config/HAVE_STATIC_CALL_INLINE) \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/asm-generic/bug.h \
+    $(wildcard include/config/BUG) \
+    $(wildcard include/config/GENERIC_BUG_RELATIVE_POINTERS) \
+  /usr/lib/modules/7.1.6-arch1-1/build/include/linux/panic.h \
+    $(wildcard include/config/PANIC_TIMEOUT) \
   /usr/lib/modules/7.1.6-arch1-1/build/include/asm-generic/barrier.h \
   /usr/lib/modules/7.1.6-arch1-1/build/arch/x86/include/asm/bitops.h \
     $(wildcard include/config/X86_CMOV) \
