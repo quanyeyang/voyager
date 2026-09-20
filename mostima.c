@@ -1,3 +1,4 @@
+#include "linux/if_ether.h"
 #include "linux/printk.h"
 #include <linux/kernel.h>
 #include <linux/module.h> // basic kernel module API
@@ -6,6 +7,9 @@
 #include <linux/etherdevice.h> // netdevice
 #include <linux/string.h>
 #include <linux/skbuff.h> // linux socket buffer API
+
+#include <linux/if_ether.h> // Ethernet layer
+#include <linux/ip.h> // IP layer
 
 static struct net_device *mostima_dev; // a struct pointer points to our device.
 
@@ -21,6 +25,26 @@ static int mostima_open(struct net_device *dev)
     return 0;
 }
 
+
+// skb
+//  │
+//  ▼
+// +-------------------------+
+// | Ethernet Header         | 14 bytes
+// +-------------------------+
+// |                         |
+// | ARP / IPv4 / IPv6 ...   |
+// |                         |
+// +-------------------------+
+// skb here is like this.
+
+// 1.and what about the ethernet header?
+//   6 bytes          6 bytes          2 bytes
+// +--------------+--------------+---------------+
+// | Destination  | Source MAC   | EtherType     |
+// | MAC          |              |               |
+// +--------------+--------------+---------------+
+
 static int mostima_stop(struct net_device *dev)
 {
     pr_info("mostima: %s stopped!\n", dev->name);
@@ -35,16 +59,32 @@ static int mostima_stop(struct net_device *dev)
 static netdev_tx_t mostima_start_xmit(struct sk_buff *skb,
                                 struct net_device *dev)
 {
+    struct ethhdr *ethernet_header;
+    u16 protocol;
+
     pr_info_ratelimited(
         "mostima: %s TX packet: %u bytes\n",
         dev->name,
         skb->len
     );
 
-    dev_kfree_skb(skb);
+
+    // 1.check what the ethernet header would be like.
+    ethernet_header = eth_hdr(skb);
+    protocol = ntohs(ethernet_header->h_proto);
+
+    pr_info_ratelimited(
+        "mostima: TX len=%u, src=%pM, dst=%pM, ethernettype=0x%04x\n", // %pM used to print MAC specificly
+        skb->len,
+        ethernet_header->h_source,
+        ethernet_header->h_dest,
+        protocol
+    );
+
 
     // LWN: if you return TX_OK, you must free skb in this function
     // this means driver receive the packet successfully
+    dev_kfree_skb(skb);
     return NETDEV_TX_OK;
 }
 
