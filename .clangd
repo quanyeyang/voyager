@@ -1,0 +1,18 @@
+# kbuild uses gcc; clangd cannot consume every flag.
+# Keep AST/completion; drop driver diagnostics that paint line 1 red.
+CompileFlags:
+  Remove:
+    - -mpreferred-stack-boundary=*
+    - -mindirect-branch=*
+    - -mindirect-branch-register
+    - -fno-allow-store-data-races
+    - -fzero-init-padding-bits=*
+    - -fdiagnostics-show-context=*
+    - -fmin-function-alignment=*
+    - -fconserve-stack
+    - -mrecord-mcount
+Diagnostics:
+  Suppress:
+    - drv_unknown_argument
+    - drv_unsupported_opt_for_target
+    - drv_unsupported_opt

@@ -1,8 +1,20 @@
 #include <linux/kernel.h>
-#include <linux/module.h>
+#include <linux/module.h> // basic kernel module API
+
+#include <linux/netdevice.h>
+#include <linux/etherdevice.h> // netdevice
+
+static struct net_device *mostima_dev; // a struct pointer points to our device.
+
+
 
 static int __init mostima_init(void)
 {
+    int ret;
+
+    mostima_dev = alloc_etherdev(0);
+    
+
     pr_info("mostima inited\n");
     return 0;
 }
