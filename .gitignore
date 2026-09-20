@@ -1,0 +1,33 @@
+# kbuild out-of-tree module
+*.o
+*.o.d
+*.ko
+*.ko.unsigned
+*.mod
+*.mod.c
+*.mod.o
+*.nsdeps
+.*.cmd
+.module-common.o
+Module.symvers
+modules.order
+.tmp_versions/
+
+# machine-local compile DB (/lib/modules/$(uname -r)/build)
+compile_commands.json
+.cache/
+
+# ctags / cscope
+tags
+TAGS
+cscope.*
+ncscope.*
+GPATH
+GRTAGS
+GSYMS
+GTAGS
+
+# editor junk
+*.swp
+*~
+*.orig
